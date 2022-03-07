@@ -139,7 +139,7 @@ def ForgotPassword(request):
 def SendEmail(request):
     if request.method == "POST":
         email = request.POST["email"]
-        user = User.objects.filter(username = "user4").first()
+        user = User.objects.filter(email = email).first()
         if user:
             uid = urlsafe_base64_encode(force_bytes(user.id))
             domain = get_current_site(request).domain
